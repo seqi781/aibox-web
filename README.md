@@ -1,5 +1,7 @@
 # aibox 宣传站
 
+**简体中文** | [English](README.en.md)
+
 aibox 的单页宣传网站：中文主页 + 英文版，纯静态，无构建步骤、无依赖、无追踪脚本，也不请求任何第三方资源（字体用系统字体）。
 
 网站的核心定位是：让 Claude Code 在独立的 Docker 环境中通过远程节点联网，减少真实公网 IP、宿主机系统信息与个人配置被工具获取或随请求暴露，以降低相关账号风控与封号风险为目标。Codex 等终端工具也可使用。
@@ -10,6 +12,8 @@ aibox 的单页宣传网站：中文主页 + 英文版，纯静态，无构建�
 
 ```
 Linux-terminal-web/
+├── README.md         中文说明
+├── README.en.md      英文说明
 ├── index.html        中文主页
 ├── en/index.html     英文版
 ├── init/             ./aibox init 的真实录制回放页（cast.js 是录制数据）
@@ -60,7 +64,7 @@ rsvg-convert -w 1200 -h 630 og.svg -o og.png
 
 ## 部署
 
-站点就是本目录，任何静态托管都可以。`README.md`、`nextjs/` 和 `tools/` 是维护用的，发布出去也没有影响，介意的话在托管平台上排除它们。
+站点就是本目录，任何静态托管都可以。`README.md`、`README.en.md`、`nextjs/` 和 `tools/` 是维护用的，发布出去也没有影响，介意的话在托管平台上排除它们。
 
 **GitHub Pages**：仓库 Settings → Pages → Source 选 “GitHub Actions”，添加 `.github/workflows/pages.yml`：
 
@@ -162,6 +166,7 @@ rm /tmp/sub.txt
 
 ## 修改内容时注意
 
+- `README.md` 为默认中文入口，`README.en.md` 为英文版；修改说明时同步两份文档，并保留顶部的语言切换链接。
 - 两个页面结构相同，改一处时记得同步另一处。
 - 页面上的事实以 aibox 仓库的 `README.md`、`docs/` 和 `AGENTS.md` 为准。未实测的环境（真实 Mac、SELinux、rootless Docker）不要写成“已验证”。
 - 防止真实环境暴露、降低相关账号风控与封号风险是设计目标，不能写成已经验证的防封号效果；不要宣传完整机器指纹伪装或抹除遥测与账号标识。
