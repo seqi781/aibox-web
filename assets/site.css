@@ -755,7 +755,7 @@ html[lang="en"] .hero h1 { font-size: clamp(32px, 3.4vw, 50px); }
 .addon-card .price-unit { font-size: 12px; }
 .addon-card .card-btn { width: auto; min-height: 44px; padding: 8px 16px; font-size: 13px; }
 .addon-details { margin-top: 8px; }
-.addon-details summary { cursor: pointer; color: var(--mut); font-size: 12px; min-height: 32px; display: flex; align-items: center; gap: 8px; }
+.addon-details summary { cursor: pointer; color: var(--mut); font-size: 12px; min-height: 44px; display: flex; align-items: center; gap: 8px; }
 .addon-details summary::before { content: "+"; font-size: 16px; }
 .addon-details[open] summary::before { content: "−"; }
 .addon-details summary::-webkit-details-marker { display: none; }
