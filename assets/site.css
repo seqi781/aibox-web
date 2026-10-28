@@ -737,8 +737,28 @@ html[lang="en"] .hero h1 { font-size: clamp(32px, 3.4vw, 50px); }
 }
 
 .pricing-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.pricing-addons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin: 24px 0; }
+.pricing-addons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 20px; }
 .card-service-notice { font-size: 12px; line-height: 1.75; color: var(--mut); margin: 16px 0; overflow-wrap: anywhere; }
 .card-btn[aria-disabled="true"] { opacity: .6; cursor: default; pointer-events: none; }
 @media(max-width: 1000px) { .pricing-grid { grid-template-columns: minmax(0, 1fr); } }
 @media(max-width: 640px) { .pricing-addons { grid-template-columns: minmax(0, 1fr); } }
+
+/* Optional subscriptions stay secondary to the three aibox plans. */
+.addons-section { margin: 32px 0 20px; }
+.addons-title { color: var(--mut); font-size: 13px; font-weight: 500; margin: 0 0 12px; }
+.addon-card { min-width: 0; padding: 18px 20px; border: 1px solid var(--line); background: var(--bg); }
+.addon-card .card-name { font-size: 16px; margin: 0 0 8px; }
+.addon-card .card-desc { font-size: 13px; min-height: 0; margin: 0 0 12px; }
+.addon-action { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.addon-card .price-box { margin: 0; gap: 6px; }
+.addon-card .price-num { font-size: 23px; }
+.addon-card .price-unit { font-size: 12px; }
+.addon-card .card-btn { width: auto; min-height: 44px; padding: 8px 16px; font-size: 13px; }
+.addon-details { margin-top: 8px; }
+.addon-details summary { cursor: pointer; color: var(--mut); font-size: 12px; min-height: 32px; display: flex; align-items: center; gap: 8px; }
+.addon-details summary::before { content: "+"; font-size: 16px; }
+.addon-details[open] summary::before { content: "−"; }
+.addon-details summary::-webkit-details-marker { display: none; }
+.addon-details .card-items { margin: 8px 0; padding-top: 12px; }
+.addon-details .card-items:empty { display: none; }
+.addon-details .card-service-notice { margin: 8px 0 0; }
