@@ -17,6 +17,22 @@
     onScroll();
   }
 
+  // 目录选择后收起；Escape 返回目录按钮，避免焦点留在隐藏链接上。
+  document.querySelectorAll(".mobile-menu").forEach(function (menu) {
+    menu.addEventListener("click", function (event) {
+      var link = event.target.closest("a");
+      if (!link) return;
+      menu.open = false;
+      if (link.hash && link.pathname === location.pathname) {
+        var target = document.getElementById(link.hash.slice(1));
+        if (target) { target.setAttribute("tabindex", "-1"); target.focus({ preventScroll: true }); }
+      }
+    });
+    menu.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") { menu.open = false; menu.querySelector("summary").focus(); }
+    });
+  });
+
   // 复制按钮：复制目标 <pre> 的纯文本（代码块里没有提示符，复制即可运行）
   function copyText(text) {
     if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);

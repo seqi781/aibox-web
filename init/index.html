@@ -8,13 +8,13 @@
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0a0a09" media="(prefers-color-scheme: dark)">
-<link rel="canonical" href="https://SITE_DOMAIN/init/">
+<link rel="canonical" href="https://usehooo.com/aibox/init/">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="aibox">
 <meta property="og:title" content="aibox init 真实录制">
 <meta property="og:description" content="从零开始配置 aibox 的完整终端过程，链接和 IP 已脱敏。">
-<meta property="og:url" content="https://SITE_DOMAIN/init/">
+<meta property="og:url" content="https://usehooo.com/aibox/init/">
 <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
@@ -30,6 +30,17 @@
       <a href="../#faq">常见问题</a>
     </nav>
     <div class="hdr-r">
+      <details class="mobile-menu">
+        <summary>目录</summary>
+        <nav aria-label="移动端页面导航">
+      <a href="../#how">原理</a>
+      <a href="../#start">上手</a>
+      <a href="../#doctor">体检</a>
+      <a href="../#faq">常见问题</a>
+
+        </nav>
+      </details>
+
       <a class="hdr-cta" href="https://github.com/seqi781/aibox">GitHub</a>
     </div>
   </div>
@@ -40,9 +51,9 @@
   <div class="shell">
     <p class="eyebrow">REAL RECORDING · ./AIBOX INIT</p>
     <h1 class="h2" id="cast-title">从零开始配置，<br>全程真实录制。</h1>
-    <p class="lede">在一台还没有 aibox 配置、镜像和容器的机器上运行 <code>./aibox init</code>：环境检查、导入节点并实测、选择项目文件夹、构建并启动，最后输出环境检测报告。下面是终端的原始输出按时间回放，不是视频，文字可以直接选中复制。</p>
+    <p class="lede">在一台重新配置 aibox、保留 Docker 构建缓存的机器上运行 <code>./aibox init</code>：环境检查、导入节点并实测、选择项目文件夹、构建并启动，最后输出环境检测报告。下面是终端的原始输出按时间回放，不是视频，文字可以直接选中复制。</p>
     <p class="note">aibox 以减少 Claude Code 暴露真实 IP 与本机环境、降低相关账号风险为目标。此录制展示配置过程，检查通过不代表完全隐藏机器信息，也不保证防封号。<a href="../#why">查看保护范围</a></p>
-    <p class="note"><span class="lbl">NOTE</span>这台机器之前构建过 aibox，Docker 里留有构建缓存，所以录制里构建镜像只用了几秒。真正第一次构建需要下载基础镜像和软件包，约 3–5 分钟。</p>
+    <p class="note"><span class="lbl">NOTE</span>这台机器之前构建过 aibox，Docker 里留有构建缓存，录制输出显示构建镜像用时 16 秒。首次构建需要下载基础镜像和软件包，时间取决于网络与机器配置。</p>
 
     <dl class="cast-meta">
       <div><dt>录制日期</dt><dd data-cast-meta="recorded">—</dd></div>

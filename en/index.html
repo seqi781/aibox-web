@@ -8,19 +8,19 @@
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0a0a09" media="(prefers-color-scheme: dark)">
-<link rel="canonical" href="https://SITE_DOMAIN/en/">
-<link rel="alternate" hreflang="zh-CN" href="https://SITE_DOMAIN/">
-<link rel="alternate" hreflang="en" href="https://SITE_DOMAIN/en/">
+<link rel="canonical" href="https://usehooo.com/aibox/en/">
+<link rel="alternate" hreflang="zh-CN" href="https://usehooo.com/aibox/">
+<link rel="alternate" hreflang="en" href="https://usehooo.com/aibox/en/">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="aibox">
 <meta property="og:title" content="aibox — isolate your real IP and host environment from Claude Code">
 <meta property="og:description" content="A separate network exit and container environment to reduce exposure of your real machine. Designed to reduce related account risk, with no guarantee against bans.">
-<meta property="og:url" content="https://SITE_DOMAIN/en/">
+<meta property="og:url" content="https://usehooo.com/aibox/en/">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="zh_CN">
 <!-- Uncomment after exporting og.png (1200×630, source: og.svg) -->
-<!-- <meta property="og:image" content="https://SITE_DOMAIN/og.png"> -->
+<!-- <meta property="og:image" content="https://usehooo.com/aibox/og.png"> -->
 <!-- <meta name="twitter:card" content="summary_large_image"> -->
 <link rel="stylesheet" href="../assets/site.css">
 </head>
@@ -38,6 +38,18 @@
       <a href="#faq">FAQ</a>
     </nav>
     <div class="hdr-r">
+      <details class="mobile-menu">
+        <summary>Menu</summary>
+        <nav aria-label="Mobile navigation">
+      <a href="#why">Goal &amp; scope</a>
+      <a href="#how">How it works</a>
+      <a href="#start">Get started</a>
+      <a href="#doctor">Doctor</a>
+      <a href="#faq">FAQ</a>
+
+        </nav>
+      </details>
+
       <a class="lang" href="../" hreflang="zh-CN" lang="zh-CN">中文</a>
       <a class="hdr-cta" href="https://github.com/seqi781/aibox">GitHub</a>
     </div>
@@ -60,7 +72,7 @@
       <ul class="hero-meta" aria-label="Overview">
         <li>macOS · Linux</li>
         <li>Windows via WSL2</li>
-        <li>Two containers, no VM</li>
+        <li>Two containers · Docker required</li>
       </ul>
     </div>
 
@@ -134,6 +146,45 @@
   </div>
 </section>
 
+<section class="sec" id="pricing" aria-labelledby="pricing-title"><div class="shell">
+ <p class="eyebrow">PRICING &amp; SERVICES</p><h2 class="h2" id="pricing-title">Plans and services</h2>
+ <p class="lede">Use the open-source project for free, or choose a paid service. Sign in with your email before payment, then send that email and your order number to support. Product copy follows the store language, with Chinese as the fallback.</p>
+ <p class="note pricing-status" id="service-status" role="status">正在读取商城最新商品信息…</p>
+ <div class="pricing-grid sec-body"><article class="price-card" data-product-sku="aibox_open_source">
+ <span class="card-badge" data-field="badge" hidden></span>
+ <div><p class="card-tag" data-field="eyebrow">自由极客 / 免费</p><h3 class="card-name" data-field="name">开源自助</h3>
+ <div class="price-box"><span class="price-num" data-field="price">¥0</span><span class="price-unit" data-field="unit">/ 永久免费</span><span class="price-orig" data-field="original" hidden></span></div>
+ <p class="card-desc" data-field="description">适合动手能力强、熟悉 Docker 与命令行操作的开发者。</p><ul class="card-items" data-field="features"><li>完整 GitHub 开源源码与文档</li><li>一键快速安装交互脚本 init</li><li>需自备网络节点与 Docker 环境</li><li>支持社区 Issue 交流答疑</li></ul><p class="card-service-notice" data-field="notice"></p></div>
+ <a class="card-btn" data-field="button" href="https://github.com/seqi781/aibox" target="_blank" rel="noopener">前往 GitHub 自助</a>
+ </article><article class="price-card" data-product-sku="aibox_setup_assistance">
+ <span class="card-badge" data-field="badge" hidden></span>
+ <div><p class="card-tag" data-field="eyebrow">1v1 答疑 / 快速排障</p><h3 class="card-name" data-field="name">配置协助服务</h3>
+ <div class="price-box"><span class="price-num" data-field="price">—</span><span class="price-unit" data-field="unit">正在读取最新价格</span><span class="price-orig" data-field="original" hidden></span></div>
+ <p class="card-desc" data-field="description">技术顾问 1 对 1 远程指导，协助排查节点与环境卡点。</p><ul class="card-items" data-field="features"><li>1v1 专人排查 Docker 与网络节点</li><li>指导跑通 init 与 doctor 出口体检</li><li>指导在个人电脑完成 Claude 授权</li><li>交付专属书面避坑与使用要点</li><li>绝不索取或代登密码</li></ul><p class="card-service-notice" data-field="notice"></p></div>
+ <a class="card-btn" data-field="button" aria-disabled="true">正在读取商品</a>
+ </article><article class="price-card featured" data-product-sku="aibox_remote_install">
+ <span class="card-badge" data-field="badge">省心推荐</span>
+ <div><p class="card-tag" data-field="eyebrow">全程远程协助 / 验收交付</p><h3 class="card-name" data-field="name">远程代装交付包</h3>
+ <div class="price-box"><span class="price-num" data-field="price">—</span><span class="price-unit" data-field="unit">正在读取最新价格</span><span class="price-orig" data-field="original" hidden></span></div>
+ <p class="card-desc" data-field="description">专家全程远程装通 Docker 与 aibox，调优出口并输出体检单。</p><ul class="card-items" data-field="features"><li>技术专家远程全套装通运行</li><li>独立路由与 DNS 出口调优</li><li>输出 doctor 出口体检报告</li><li>屏幕前当面核对完成首次登录</li><li>验收交付后享受 7 天环境稳定质保</li></ul><p class="card-service-notice" data-field="notice"></p></div>
+ <a class="card-btn primary" data-field="button" aria-disabled="true">正在读取商品</a>
+ </article></div>
+ <div class="pricing-addons"><article class="price-card" data-product-sku="claude_pro_cdk_1m">
+
+ <div><p class="card-tag" data-field="eyebrow">独立订阅</p><h3 class="card-name" data-field="name">Claude Pro</h3>
+ <div class="price-box"><span class="price-num" data-field="price">—</span><span class="price-unit" data-field="unit">正在读取最新价格</span><span class="price-orig" data-field="original" hidden></span></div>
+ <p class="card-desc" data-field="description">单独购买 Claude Pro，具体交付方式以商城商品说明为准。</p><ul class="card-items" data-field="features"></ul><p class="card-service-notice" data-field="notice"></p></div>
+ <a class="card-btn" data-field="button" aria-disabled="true">正在读取商品</a>
+ </article><article class="price-card" data-product-sku="claude_pro_assurance">
+
+ <div><p class="card-tag" data-field="eyebrow">一个月直充 + 最多两次封号补开</p><h3 class="card-name" data-field="name">Claude Pro 安心订阅包</h3>
+ <div class="price-box"><span class="price-num" data-field="price">—</span><span class="price-unit" data-field="unit">正在读取最新价格</span><span class="price-orig" data-field="original" hidden></span></div>
+ <p class="card-desc" data-field="description">含 Claude Pro 一个月直充，保障期内如遇封号最多补开两次。</p><ul class="card-items" data-field="features"><li>首次直充到账起保障 30 天</li><li>保障期内封号最多补开两次</li><li>补开不重新计时、不延长保障期</li><li>不等于额外赠送两个月订阅</li></ul><p class="card-service-notice" data-field="notice"></p></div>
+ <a class="card-btn" data-field="button" aria-disabled="true">正在读取商品</a>
+ </article></div>
+ <p class="note">Assistance and installation exclude network nodes and Claude subscriptions. The assurance plan already includes one month of Pro. Any payment fee is shown separately at checkout.</p>
+ <noscript><p class="note">请启用 JavaScript 读取最新价格，或<a href="/store">前往商城查看与购买</a>。</p></noscript>
+ </div></section>
 <section class="sec" id="how" aria-labelledby="how-title">
   <div class="shell">
     <p class="eyebrow">HOW IT WORKS</p>
@@ -391,7 +442,7 @@ aibox claude</pre></div>
         <ul>
           <li><a href="https://github.com/seqi781/aibox">GitHub repository</a></li>
           <li><a href="https://github.com/seqi781/aibox/issues">Issues</a></li>
-          <li><a href="https://github.com/seqi781/aibox/blob/main/LICENSE">License: LICENSE_NAME</a></li>
+          <li><a href="https://github.com/seqi781/aibox/blob/main/LICENSE">Repository license</a></li>
         </ul>
       </div>
       <div>
@@ -406,11 +457,12 @@ aibox claude</pre></div>
     <div class="legal">
       <p>aibox is an independent open-source project, not affiliated with, endorsed or sponsored by Anthropic or OpenAI. Claude Code, Codex and related names are trademarks of their respective owners and are used here only to describe compatibility.</p>
       <p>aibox aims to reduce real machine environment exposure and related account risk, with no guarantee against bans. Use it in compliance with local laws and the terms of the services you use.</p>
-      <p>This site uses no cookies, no analytics or tracking scripts, and loads no third-party resources.</p>
+      <p>This page loads no third-party tracking scripts. Store sign-in and checkout use the main site’s essential session cookies.</p>
     </div>
   </div>
 </footer>
 
+<script src="../assets/pricing.js" defer></script>
 <script src="../assets/site.js" defer></script>
 </body>
 </html>

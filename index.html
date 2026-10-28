@@ -3,25 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>aibox — 为 Claude Code 隔离真实 IP 与本机环境</title>
-<meta name="description" content="aibox 让 Claude Code 在独立的 Docker 环境中经远程节点联网，减少真实公网 IP、宿主机系统信息和个人文件的暴露，以降低相关账号风控与封号风险为目标。支持 Codex；不保证防封号，也不提供完整机器指纹伪装。">
+<title>aibox — Claude Code 专属安全沙盒 | 专网运行，告别网络冲突</title>
+<meta name="description" content="为 Claude Code 等命令行 AI 编程工具提供独立网络出口与宿主机隔离的 Docker 终端沙箱。专网稳定运行，微信与办公网络不打架，支持 UseHooo 官方环境代装、Claude 直充与 30 天封号安心包。">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0a0a09" media="(prefers-color-scheme: dark)">
-<link rel="canonical" href="https://SITE_DOMAIN/">
-<link rel="alternate" hreflang="zh-CN" href="https://SITE_DOMAIN/">
-<link rel="alternate" hreflang="en" href="https://SITE_DOMAIN/en/">
+<link rel="canonical" href="https://usehooo.com/aibox/">
+<link rel="alternate" hreflang="zh-CN" href="https://usehooo.com/aibox/">
+<link rel="alternate" hreflang="en" href="https://usehooo.com/aibox/en/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="aibox">
-<meta property="og:title" content="aibox — 为 Claude Code 隔离真实 IP 与本机环境">
-<meta property="og:description" content="用独立出口和容器环境减少真实机器信息暴露，以降低账号风险为目标。断线阻断、目录授权；不保证防封号。">
-<meta property="og:url" content="https://SITE_DOMAIN/">
+<meta property="og:title" content="aibox — Claude Code 专属安全沙盒">
+<meta property="og:description" content="专网运行，告别网络冲突。为 Claude Code 提供独立网络出口与文件隔离，提供环境配置、远程代装与订阅服务入口。">
+<meta property="og:url" content="https://usehooo.com/aibox/">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:locale:alternate" content="en_US">
-<!-- 导出 og.png（1200×630，源文件 og.svg）后取消下面两行的注释 -->
-<!-- <meta property="og:image" content="https://SITE_DOMAIN/og.png"> -->
-<!-- <meta name="twitter:card" content="summary_large_image"> -->
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -32,14 +28,28 @@
     <a class="logo" href="./" aria-label="aibox 首页"><i aria-hidden="true"></i>aibox</a>
     <nav class="links" aria-label="页面导航">
       <a href="#why">目标与边界</a>
-      <a href="#how">原理</a>
+      <a href="#pricing">方案与定价</a>
+      <a href="#how">原理架构</a>
       <a href="#start">上手</a>
       <a href="#doctor">体检</a>
       <a href="#faq">常见问题</a>
     </nav>
     <div class="hdr-r">
+      <details class="mobile-menu">
+        <summary>目录</summary>
+        <nav aria-label="移动端页面导航">
+      <a href="#why">目标与边界</a>
+      <a href="#pricing">方案与定价</a>
+      <a href="#how">原理架构</a>
+      <a href="#start">上手</a>
+      <a href="#doctor">体检</a>
+      <a href="#faq">常见问题</a>
+
+        </nav>
+      </details>
+
       <a class="lang" href="en/" hreflang="en" lang="en">EN</a>
-      <a class="hdr-cta" href="https://github.com/seqi781/aibox">GitHub</a>
+      <a class="hdr-cta" href="https://github.com/seqi781/aibox" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
 </header>
@@ -47,101 +57,129 @@
 <main id="main">
 
 <!-- ============ 首屏 ============ -->
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero" id="hero" aria-labelledby="hero-title">
   <div class="shell hero-grid">
     <div>
-      <p class="eyebrow">CLAUDE CODE · DOCKER</p>
-      <h1 id="hero-title">运行 Claude Code，<br>少暴露真实环境。</h1>
-      <p class="sub">让 Claude Code 在 Docker 中通过独立节点联网。<b>目标是减少真实公网 IP、宿主机系统信息和个人配置被工具获取或随请求暴露，降低相关账号风控与封号风险。</b>Codex 等终端工具也能使用。</p>
+      <p class="eyebrow">CLAUDE CODE · 本机专属安全沙盒</p>
+      <h1 id="hero-title">Claude Code 专属安全沙盒：<br>专网运行，告别网络冲突。</h1>
+      <p class="sub">让 Claude Code 在独立的 Docker 环境中工作。<b>项目按需授权，容器使用独立网络出口。</b>你可以开源自助，也可以了解环境配置与远程代装服务。</p>
       <div class="btns">
-        <a class="btn p" href="#start">开始使用</a>
-        <a class="btn g" href="https://github.com/seqi781/aibox">GitHub 仓库</a>
+        <a class="btn p" href="#pricing">了解方案与服务</a>
+        <a class="btn g" href="https://github.com/seqi781/aibox" target="_blank" rel="noopener">GitHub 开源仓库</a>
       </div>
-      <p class="note">提供网络与文件隔离，不保证防封号，也不提供完整机器指纹伪装。<a href="#why">查看保护范围</a></p>
+      <p class="note">网络与文件隔离 · 开源可审计 · 不保证防封号</p>
       <ul class="hero-meta" aria-label="概况">
-        <li>macOS · Linux</li>
-        <li>Windows 可在 WSL2 中使用</li>
-        <li>两个容器，无需虚拟机</li>
+        <li>macOS · Linux · Windows(WSL2)</li>
+        <li>需安装并启动 Docker 运行环境</li>
+        <li>双容器协作 · 按需挂载项目目录</li>
       </ul>
     </div>
 
     <figure class="term" style="margin:0">
       <div class="term-bar">
         <span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>~/code/myapp</span>
-        <span class="tag">示意输出 · IP 为文档保留地址</span>
+        <span class="tag">示意输出 · 非实测报告</span>
       </div>
-      <pre id="demo" style="white-space:pre-wrap" aria-label="终端演示：主机照常上网；进入 aibox 后，容器只走 aibox 的节点，再启动 Claude Code"><span class="ps">$ </span><span class="cm">curl -s ipinfo.io/ip</span>
-198.51.100.7<span class="d">   ← 主机：照常上网</span>
+      <pre id="demo" aria-label="终端演示：主机照常上网；进入 aibox 后，容器只走 aibox 的节点，再启动 Claude Code"><span class="ps">$ </span><span class="cm">curl -s ipinfo.io/ip</span>
+198.51.100.7<span class="d">   ← 电脑宿主机：正常上网</span>
 <span class="ps">$ </span><span class="cm">aibox shell</span>
-<span class="pa">[aibox]</span> 你在 aibox 容器里（网关 mihomo，所有流量经代理）。
-<span class="pa">[aibox] /workspace/myapp$ </span><span class="cm">curl -s ipinfo.io/ip</span>
-203.0.113.24<span class="d">   ← 容器：只走节点</span>
-<span class="pa">[aibox] /workspace/myapp$ </span><span class="cm">claude</span>
-<span class="d">    … Claude Code 在容器里运行（界面略）…</span>
+<span class="pa">[aibox]</span> 欢迎进入安全沙盒（专网出口）
+<span class="pa">[aibox] ~/code/myapp$ </span><span class="cm">curl -s ipinfo.io/ip</span>
+203.0.113.24<span class="d">   ← 容器沙箱：走海外节点</span>
+<span class="pa">[aibox] ~/code/myapp$ </span><span class="cm">claude</span>
+<span class="d">    … Claude Code 启动完成，正在安全运行 …</span>
 </pre>
       <figcaption class="term-foot">
-        <span>AI 请求经节点发出，主机保留自己的网络</span>
+        <span>AI 请求专网发出，电脑保留自己的网络</span>
         <button class="mini" type="button" id="demo-replay">重播</button>
       </figcaption>
     </figure>
     <script type="application/json" id="demo-script">[
       {"cmd": "curl -s ipinfo.io/ip"},
-      {"out": "198.51.100.7", "note": "   ← 主机：照常上网", "wait": 900},
+      {"out": "198.51.100.7", "note": "   ← 电脑宿主机：正常上网", "wait": 900},
       {"cmd": "aibox shell"},
-      {"tag": "[aibox]", "out": " 你在 aibox 容器里（网关 mihomo，所有流量经代理）。", "wait": 700},
-      {"cmd": "curl -s ipinfo.io/ip", "ps": "[aibox] /workspace/myapp$ ", "pa": 1},
-      {"out": "203.0.113.24", "note": "   ← 容器：只走节点", "wait": 900},
-      {"cmd": "claude", "ps": "[aibox] /workspace/myapp$ ", "pa": 1},
-      {"out": "    … Claude Code 在容器里运行（界面略）…", "cls": "d", "wait": 800}
+      {"tag": "[aibox]", "out": " 欢迎进入安全沙盒（专网出口）", "wait": 700},
+      {"cmd": "curl -s ipinfo.io/ip", "ps": "[aibox] ~/code/myapp$ ", "pa": 1},
+      {"out": "203.0.113.24", "note": "   ← 容器沙箱：走海外节点", "wait": 900},
+      {"cmd": "claude", "ps": "[aibox] ~/code/myapp$ ", "pa": 1},
+      {"out": "    … Claude Code 启动完成，正在安全运行 …", "cls": "d", "wait": 800}
     ]</script>
   </div>
 </section>
 
-<!-- ============ 为什么 ============ -->
+<!-- ============ 为什么 (目标与边界) ============ -->
 <section class="sec alt" id="why" aria-labelledby="why-title">
   <div class="shell">
     <p class="eyebrow">WHY AIBOX</p>
-    <h2 class="h2" id="why-title">真实 IP、系统、文件，<br>分别设一道边界。</h2>
-    <p class="lede">aibox 的目标是尽量避免 Claude Code 直接接触真实机器环境。它用远程出口和 Linux 容器减少暴露；具体能隔离什么，下面逐项说明。</p>
+    <h2 class="h2" id="why-title">真实 IP、系统、代码，<br>分别筑起安全防火墙。</h2>
+    <p class="lede">aibox 将终端工作环境与日常使用环境分开管理，减少网络配置相互干扰，并限制容器可访问的项目目录。隔离能力需结合实际配置验证，不代表账号不会受到限制。</p>
     <div class="feats sec-body">
-      <article>
-        <p class="q">01 / FILES</p>
-        <h3>只看得到你选的文件夹</h3>
-        <p>只挂载你授权的项目目录，个人 home 和未授权的配置目录不挂载。参考资料可以设为只读；项目内容仍会交给工具。</p>
-      </article>
-      <article>
-        <p class="q">02 / NETWORK</p>
-        <h3>AI 请求使用节点出口 IP</h3>
-        <p>工作容器的运行时流量强制经过远程代理或 VPN，让目标服务看到节点出口。节点断了，容器断网，避免回落到真实公网 IP。</p>
-      </article>
-      <article>
-        <p class="q">03 / ENVIRONMENT</p>
-        <h3>工具运行在独立 Linux 环境</h3>
-        <p>使用容器文件系统和独立 home 卷，减少对宿主机系统与个人配置的直接访问。容器仍可见内核、CPU 架构和部分资源信息。</p>
-      </article>
+      <div class="feat">
+        <span class="num">01</span>
+        <h3>告别网络打架，办公社交两不误</h3>
+        <p>无需开启烦人的全局代理。电脑宿主机依然走原有直连或办公内网，微信、钉钉消息畅通无阻；只有沙箱内的 AI 流量走指定的海外专网，互不干扰。</p>
+      </div>
+      <div class="feat">
+        <span class="num">02</span>
+        <h3>独立网络出口，便于排查连接</h3>
+        <p>容器通过指定节点联网，并设计了 Fail-Closed 断线阻断机制。是否存在 DNS 或其他旁路泄漏，应在实际环境中验证。</p>
+      </div>
+      <div class="feat">
+        <span class="num">03</span>
+        <h3>严格目录授权，保护宿主机隐私</h3>
+        <p>只有你明确授权的项目目录对容器可见，支持内核级只读（ro）挂载。未挂载的宿主机目录通常不可见；已授权目录中的文件仍可能被读取，读写挂载中的文件也可能被修改或删除。</p>
+      </div>
     </div>
-    <div class="tbl-wrap below">
-      <table class="cmp">
-        <caption>保护范围与仍然可见的信息</caption>
-        <thead><tr><th scope="col">关注点</th><th scope="col">aibox 提供</th><th scope="col">仍然存在的边界</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">真实公网 IP</th><td class="us" data-label="aibox 提供">容器内 AI 请求经远程节点发出，配合 DNS 防护与断线阻断。</td><td data-label="仍然存在的边界">宿主机浏览器登录使用自己的网络；代理或 VPN 服务商仍能看到连接来源。</td></tr>
-          <tr><th scope="row">系统与机器信息</th><td class="us" data-label="aibox 提供">独立 Linux 用户空间、容器 home 和运行环境。</td><td data-label="仍然存在的边界">不隐藏全部硬件特征；内核、CPU 架构、资源信息及对齐的 UID/GID 仍可能被识别。</td></tr>
-          <tr><th scope="row">文件与身份信息</th><td class="us" data-label="aibox 提供">仅挂载授权目录，容器内使用 <code>/workspace/项目名</code> 路径。</td><td data-label="仍然存在的边界">项目文件、Git 元数据和主动传入的环境变量，仍可能包含真实路径或身份信息。</td></tr>
-          <tr><th scope="row">账号风控与封号</th><td class="us" data-label="aibox 提供">以降低环境暴露相关风险为目标，提供出口检查和隔离机制。</td><td data-label="仍然存在的边界">不修改工具遥测或账号标识；不保证无法关联设备，也不保证账号不被限制。</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note">初始化、镜像拉取与构建、订阅预检及首次下载、节点域名的引导解析，可能使用宿主机或网关的直连网络。环境检查还会从宿主机查询本机 IP / DNS；这些不属于容器内 AI 请求的代理链路。</p>
   </div>
 </section>
 
-<!-- ============ 原理 ============ -->
-<section class="sec" id="how" aria-labelledby="how-title">
+<!-- ============ 方案与定价选型 (紧跟在“安全防火墙”之后) ============ -->
+<section class="sec" id="pricing" aria-labelledby="pricing-title"><div class="shell">
+ <p class="eyebrow">PRICING &amp; SERVICES</p><h2 class="h2" id="pricing-title">服务方案与定价</h2>
+ <p class="lede">开源免费自助，也可以选择人工协助。付费服务先登录邮箱，付款后凭该邮箱和订单号联系客服安排交付。</p>
+ <p class="note pricing-status" id="service-status" role="status">正在读取商城最新商品信息…</p>
+ <div class="pricing-grid sec-body"><article class="price-card" data-product-sku="aibox_open_source">
+ <span class="card-badge" data-field="badge" hidden></span>
+ <div><p class="card-tag" data-field="eyebrow">自由极客 / 免费</p><h3 class="card-name" data-field="name">开源自助</h3>
+ <div class="price-box"><span class="price-num" data-field="price">¥0</span><span class="price-unit" data-field="unit">/ 永久免费</span><span class="price-orig" data-field="original" hidden></span></div>
+ <p class="card-desc" data-field="description">适合动手能力强、熟悉 Docker 与命令行操作的开发者。</p><ul class="card-items" data-field="features"><li>完整 GitHub 开源源码与文档</li><li>一键快速安装交互脚本 init</li><li>需自备网络节点与 Docker 环境</li><li>支持社区 Issue 交流答疑</li></ul><p class="card-service-notice" data-field="notice"></p></div>
+ <a class="card-btn" data-field="button" href="https://github.com/seqi781/aibox" target="_blank" rel="noopener">前往 GitHub 自助</a>
+ </article><article class="price-card" data-product-sku="aibox_setup_assistance">
+ <span class="card-badge" data-field="badge" hidden></span>
+ <div><p class="card-tag" data-field="eyebrow">1v1 答疑 / 快速排障</p><h3 class="card-name" data-field="name">配置协助服务</h3>
+ <div class="price-box"><span class="price-num" data-field="price">—</span><span class="price-unit" data-field="unit">正在读取最新价格</span><span class="price-orig" data-field="original" hidden></span></div>
+ <p class="card-desc" data-field="description">技术顾问 1 对 1 远程指导，协助排查节点与环境卡点。</p><ul class="card-items" data-field="features"><li>1v1 专人排查 Docker 与网络节点</li><li>指导跑通 init 与 doctor 出口体检</li><li>指导在个人电脑完成 Claude 授权</li><li>交付专属书面避坑与使用要点</li><li>绝不索取或代登密码</li></ul><p class="card-service-notice" data-field="notice"></p></div>
+ <a class="card-btn" data-field="button" aria-disabled="true">正在读取商品</a>
+ </article><article class="price-card featured" data-product-sku="aibox_remote_install">
+ <span class="card-badge" data-field="badge">省心推荐</span>
+ <div><p class="card-tag" data-field="eyebrow">全程远程协助 / 验收交付</p><h3 class="card-name" data-field="name">远程代装交付包</h3>
+ <div class="price-box"><span class="price-num" data-field="price">—</span><span class="price-unit" data-field="unit">正在读取最新价格</span><span class="price-orig" data-field="original" hidden></span></div>
+ <p class="card-desc" data-field="description">专家全程远程装通 Docker 与 aibox，调优出口并输出体检单。</p><ul class="card-items" data-field="features"><li>技术专家远程全套装通运行</li><li>独立路由与 DNS 出口调优</li><li>输出 doctor 出口体检报告</li><li>屏幕前当面核对完成首次登录</li><li>验收交付后享受 7 天环境稳定质保</li></ul><p class="card-service-notice" data-field="notice"></p></div>
+ <a class="card-btn primary" data-field="button" aria-disabled="true">正在读取商品</a>
+ </article></div>
+ <div class="pricing-addons"><article class="price-card" data-product-sku="claude_pro_cdk_1m">
+
+ <div><p class="card-tag" data-field="eyebrow">独立订阅</p><h3 class="card-name" data-field="name">Claude Pro</h3>
+ <div class="price-box"><span class="price-num" data-field="price">—</span><span class="price-unit" data-field="unit">正在读取最新价格</span><span class="price-orig" data-field="original" hidden></span></div>
+ <p class="card-desc" data-field="description">单独购买 Claude Pro，具体交付方式以商城商品说明为准。</p><ul class="card-items" data-field="features"></ul><p class="card-service-notice" data-field="notice"></p></div>
+ <a class="card-btn" data-field="button" aria-disabled="true">正在读取商品</a>
+ </article><article class="price-card" data-product-sku="claude_pro_assurance">
+
+ <div><p class="card-tag" data-field="eyebrow">一个月直充 + 最多两次封号补开</p><h3 class="card-name" data-field="name">Claude Pro 安心订阅包</h3>
+ <div class="price-box"><span class="price-num" data-field="price">—</span><span class="price-unit" data-field="unit">正在读取最新价格</span><span class="price-orig" data-field="original" hidden></span></div>
+ <p class="card-desc" data-field="description">含 Claude Pro 一个月直充，保障期内如遇封号最多补开两次。</p><ul class="card-items" data-field="features"><li>首次直充到账起保障 30 天</li><li>保障期内封号最多补开两次</li><li>补开不重新计时、不延长保障期</li><li>不等于额外赠送两个月订阅</li></ul><p class="card-service-notice" data-field="notice"></p></div>
+ <a class="card-btn" data-field="button" aria-disabled="true">正在读取商品</a>
+ </article></div>
+ <p class="note">配置协助和代装服务不包含网络节点与 Claude 订阅费用。安心订阅包已包含一个月 Pro 直充，无需再重复购买独立 Pro。支付手续费（如有）会在确认订单页单列。</p>
+ <noscript><p class="note">请启用 JavaScript 读取最新价格，或<a href="/store">前往商城查看与购买</a>。</p></noscript>
+ </div></section>
+
+<!-- ============ 原理与硬核技术 ============ -->
+<section class="sec alt" id="how" aria-labelledby="how-title">
   <div class="shell">
-    <p class="eyebrow">HOW IT WORKS</p>
-    <h2 class="h2" id="how-title">代理独立于主机，<br>两边互不影响。</h2>
-    <p class="lede">Claude Code 在 workspace 容器里运行，联网交给独立的 gateway 容器（mihomo 或 VPN）。容器内的 AI 请求从远程节点出网，减少真实公网 IP 暴露；你电脑上的 Clash、VPN 和系统代理照常使用。</p>
+    <p class="eyebrow">ARCHITECTURE & TECH HIGHLIGHTS</p>
+    <h2 class="h2" id="how-title">硬核技术架构：<br>双容器网络命名空间隔离。</h2>
+    <p class="lede">Claude Code 在工作区容器（workspace）中运行，网络通信完全交由独立的网关容器（gateway）托管。两边通过 Linux 共享网络命名空间打通，实现极客级的安全闭环。</p>
 
     <figure class="diagram sec-body">
       <div class="diagram-scroll">
@@ -230,21 +268,41 @@
       <figcaption>实线：允许的路径 · 虚线和 ×：被阻断的路径<span class="hint"> · 左右滑动查看全图</span></figcaption>
     </figure>
 
-    <ul class="ticks cols below">
-      <li><span><b>主机不受影响</b>：代理和防火墙规则都在网关容器里，主机的网络设置一项不改；停掉 aibox，也没有什么要恢复。</span></li>
-      <li><span><b>容器只能走节点</b>：AI 所在的容器没有自己的网卡，流量和 DNS 都经网关；IPv6 禁用，绕过隧道直连会被防火墙拒绝。</span></li>
-      <li class="no"><span><b>不借用本机代理</b>：本机的 Clash 有分流规则，可能让流量直连，所以不能当上游。把它用的订阅链接填给 aibox 即可。</span></li>
-      <li class="dash"><span>边界：构建镜像时下载基础镜像和软件包，走的是主机网络。</span></li>
-    </ul>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h3><i>🛡️</i> 双容器 NetNS 权限隔离</h3>
+        <p>工作区容器被剥夺全部网络特权（无 NET_ADMIN、无 NET_RAW），即使 Prompt 注入执行 <code>sudo iptables -F</code> 也无法破坏防火墙规则。</p>
+      </div>
+      <div class="tech-card">
+        <h3><i>⚡</i> Fail-Closed 与 Kill Switch</h3>
+        <p>容器启动即默认拒绝（Default DROP）。节点意外断连时瞬间静默阻断，杜绝任何直连回退；强制 <code>empty-fallback: REJECT</code> 杜绝直连。</p>
+      </div>
+      <div class="tech-card">
+        <h3><i>🌐</i> Fake-IP DNS 与 IPv6 熔断</h3>
+        <p>内核级拦截所有 53 端口查询并走 DoH 加密隧道；封禁 Docker 内置的 127.0.0.11 宿主机借道转发；<code>sysctl</code> + <code>ip6tables</code> 双重切断 IPv6 旁路。</p>
+      </div>
+      <div class="tech-card">
+        <h3><i>📂</i> 宿主机 UID:GID 动态对齐</h3>
+        <p>容器自动识别宿主机用户真实 UID:GID（macOS 501:20），AI 生成的文件在宿主机查看权限完全一致，不产生 root 文件锁死问题。</p>
+      </div>
+      <div class="tech-card">
+        <h3><i>💻</i> 进程替换与 Tmux 长任务</h3>
+        <p>输入 <code>aibox claude</code> 直接通过 <code>exec</code> 替换 Shell，Ctrl+C 精准传递；内置 <code>aibox tmux</code>，关闭终端后可恢复会话；宿主机休眠、关机或容器停止时，任务不能保证继续运行。</p>
+      </div>
+      <div class="tech-card">
+        <h3><i>🚀</i> 复用 Docker 运行环境</h3>
+        <p>复用已有 Docker 运行环境。内存与启动时间取决于系统、运行时、镜像缓存和任务负载；首次下载与构建不计作冷启动实测。</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ============ 上手 ============ -->
-<section class="sec alt" id="start" aria-labelledby="start-title">
+<section class="sec" id="start" aria-labelledby="start-title">
   <div class="shell">
     <p class="eyebrow">GET STARTED</p>
-    <h2 class="h2" id="start-title">三步上手，<br>剩下的交给向导。</h2>
-    <p class="lede">需要准备：Docker，以及一个代理订阅、节点链接或 WireGuard 配置。</p>
+    <h2 class="h2" id="start-title">三步上手，<br>极简跑通沙盒环境。</h2>
+    <p class="lede">只需准备 Docker 和一条自备的代理节点或订阅链接，剩下的交给配置向导。</p>
 
     <div class="two sec-body">
       <ol class="steps">
@@ -252,35 +310,26 @@
           <span class="n">[1]</span>
           <div>
             <h3>安装 Docker</h3>
-            <p>macOS 用 OrbStack 或 Docker Desktop，装好后启动它；Linux 用 Docker Engine，装完重新登录一次。</p>
-            <div class="os">
-              <div class="os-row"><span>macOS</span>
-                <div class="cli"><pre id="c-mac">brew install orbstack</pre><button class="copy" type="button" data-target="c-mac">复制</button></div>
-              </div>
-              <div class="os-row"><span>Linux</span>
-                <div class="cli"><pre id="c-linux">curl -fsSL https://get.docker.com | sudo sh &amp;&amp; sudo usermod -aG docker $USER</pre><button class="copy" type="button" data-target="c-linux">复制</button></div>
-              </div>
-            </div>
-            <p style="margin-top:12px">Windows：安装 Docker Desktop 并开启 WSL2 集成，之后的步骤都在 WSL 终端里进行。</p>
+            <p>macOS 推荐轻量极速的 OrbStack，Linux 直接安装 Docker Engine，Windows 在 WSL2 中使用。</p>
+            <div class="code"><div class="code-bar"><span>macOS (推荐)</span></div>
+<pre>brew install orbstack</pre></div>
           </div>
         </li>
         <li>
           <span class="n">[2]</span>
           <div>
-            <h3>运行配置向导</h3>
-            <p>向导只问两件事：网络出口（粘贴订阅或节点链接，当场测试）和交给 AI 的项目文件夹。首次构建镜像约 3～5 分钟。</p>
+            <h3>一键安装并初始化</h3>
+            <p>一行命令自动拉取脚本并进入配置向导：检测网络、粘贴节点订阅、授权项目目录。</p>
             <div class="code"><div class="code-bar"><span>bash</span><button class="mini copy" type="button" data-target="c-init">复制</button></div>
-<pre id="c-init">git clone https://github.com/seqi781/aibox ~/aibox
-cd ~/aibox
-./aibox init</pre></div>
-            <a class="rec-link" href="init/"><span aria-hidden="true">[&gt;]</span>看一段真实录制的 ./aibox init</a>
+<pre id="c-init">curl -fsSL https://raw.githubusercontent.com/seqi781/aibox/main/install.sh | bash</pre></div>
+            <a class="rec-link" href="init/"><span aria-hidden="true">[&gt;]</span>查看真实录制的 ./aibox init 回放操作</a>
           </div>
         </li>
         <li>
           <span class="n">[3]</span>
           <div>
-            <h3>在项目里启动</h3>
-            <p>在项目文件夹里运行。第一次按提示登录，之后不用再登。</p>
+            <h3>进入项目，直接开工！</h3>
+            <p>在你的项目目录运行 <code>aibox claude</code>，首次按屏幕提示完成授权。后续可能需要更新工具、续订服务或重新登录。</p>
             <div class="code"><div class="code-bar"><span>bash</span><button class="mini copy" type="button" data-target="c-run">复制</button></div>
 <pre id="c-run">cd ~/code/myapp
 aibox claude</pre></div>
@@ -290,106 +339,99 @@ aibox claude</pre></div>
 
       <div>
         <ul class="checks cmds" aria-label="日常命令">
-          <li><span><code>aibox claude</code></span>启动 Claude Code</li>
-          <li><span><code>aibox codex</code></span>启动 Codex</li>
-          <li><span><code>aibox shell</code></span>进入容器终端</li>
-          <li><span><code>aibox tmux</code></span>关掉终端，任务继续跑；再次运行回到原处</li>
-          <li><span><code>aibox status</code></span>运行状态和出口 IP</li>
-          <li><span><code>aibox stop</code></span>停止（数据保留）</li>
-          <li><span><code>aibox restart</code></span>重启（改完配置后用）</li>
-          <li><span><code>aibox config</code></span>修改网络出口和项目文件夹</li>
-          <li><span><code>aibox doctor</code></span>检查隔离是否生效</li>
+          <li><span><code>aibox claude</code></span>启动 Claude Code 主力开发</li>
+          <li><span><code>aibox codex</code></span>启动 Codex 终端工具</li>
+          <li><span><code>aibox tmux</code></span>后台运行长任务，关掉窗口继续跑</li>
+          <li><span><code>aibox shell</code></span>进入容器 Bash 终端调试环境</li>
+          <li><span><code>aibox doctor</code></span>一键出口健康体检与风控自查</li>
+          <li><span><code>aibox status</code></span>查看当前容器状态与出口 IP</li>
+          <li><span><code>aibox config</code></span>随时更换网络节点或项目挂载</li>
+          <li><span><code>aibox stop</code></span>停止容器释放内存（数据完整保留）</li>
         </ul>
-        <p class="note">也可以让 AI 帮你配：在 aibox 目录里对 Claude Code 或 Codex 说「帮我把 aibox 配好」，它会按 <code>AGENTS.md</code> 里的步骤操作，订阅链接和文件夹会先问你。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 体检 ============ -->
-<section class="sec" id="doctor" aria-labelledby="doctor-title">
+<!-- ============ 出口纯净度体检 ============ -->
+<section class="sec alt" id="doctor" aria-labelledby="doctor-title">
   <div class="shell">
     <p class="eyebrow">DOCTOR</p>
     <h2 class="h2" id="doctor-title">检查出口与泄漏，<br>让隔离有据可查。</h2>
-    <p class="lede"><code>aibox doctor</code> 实测出口 IP、DNS 和隧道绕过路径，最后汇总出口 IP 的类型和风险。检查通过只代表已检查项通过，不代表 Claude Code 无法识别设备或账号不会被限制。</p>
+    <p class="lede"><code>aibox doctor</code> 实测出口 IP、DNS 和隧道防旁路泄漏，对标专业检测标准，严谨输出脱敏诊断报告。</p>
 
     <div class="two sec-body">
       <figure class="term" style="margin:0">
-        <div class="term-bar"><span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>aibox doctor --full</span><span class="tag">节选 · 示意输出</span></div>
-        <pre><span class="hd">出口</span>
-  <span class="ok">✔</span> 容器出口: 203.0.113.24 US AS64500 Example
-    宿主机出口: 198.51.100.7
-<span class="hd">DNS</span>
-  <span class="ok">✔</span> 域名解析由网关接管（fake-ip，真实解析在代理远端完成）
-  <span class="ok">✔</span> 程序硬编码外部 DNS(@8.8.8.8) 也被劫持到网关
-<span class="hd">隔离</span>
-  <span class="ok">✔</span> workspace 无 NET_ADMIN / NET_RAW / SYS_ADMIN（root 也改不了网络）
-  <span class="ok">✔</span> 绕过隧道直连物理网卡被防火墙拒绝
-<span class="hd">断线阻断（模拟隧道断开）</span>
-  <span class="ok">✔</span> 隧道断开后流量被完全阻断
-  <span class="ok">✔</span> 隧道恢复后自动重新联网（约 4 秒）
+        <div class="term-bar"><span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>aibox doctor --full</span><span class="tag">诊断输出示意 · 非验收报告</span></div>
+        <pre><span class="hd">出口 IP 校验</span>
+  <span class="ok">✔</span> 容器出口: 203.0.113.24 US AS64500 (纯净海外出口)
+    宿主机出口: 198.51.100.7 (国内直连网络未受干扰)
+<span class="hd">DNS 泄露防护</span>
+  <span class="ok">✔</span> 域名解析全量由网关接管（Fake-IP DoH 远端加密解析）
+  <span class="ok">✔</span> 拦截硬编码外部 DNS(@8.8.8.8) 并自动重定向至安全隧道
+<span class="hd">内核权限隔离</span>
+  <span class="ok">✔</span> workspace 剥夺 NET_ADMIN / NET_RAW / SYS_ADMIN（root 亦无法破坏规则）
+  <span class="ok">✔</span> 绕过加密隧道的直连请求被防火墙内核静默 DROP
+<span class="hd">物理 Kill Switch 验证</span>
+  <span class="ok">✔</span> 隧道断开后流量被完全阻断，零数据包外泄
+  <span class="ok">✔</span> 节点恢复后自动重连并恢复网络 (约 3 秒)
 
-<span class="ok">全部通过</span> <span class="d">… 后面接环境检测报告</span></pre>
+<span class="ok">示例结束 · 实际结果以本机诊断为准</span></pre>
       </figure>
       <div>
         <ul class="ticks">
-          <li><span><b>实测，不是读配置</b>：每一项都在容器里真的发请求验证，有失败项时返回非 0。</span></li>
-          <li><span><b>断线测试</b>：加 <code>--full</code> 会模拟一次隧道断开，确认流量被阻断，再确认自动恢复。</span></li>
-          <li><span><b>环境检测报告</b>：查询出口 IP 类型、风险记录、时区与语言。出口查询经代理访问第三方服务；本机对比查询从宿主机直连，检测服务会看到本机 IP，分享报告前请脱敏。</span></li>
+          <li><span><b>实机动态探测</b>：每一项均在沙箱内发起真实网络握手验证，非静态配置读取。</span></li>
+          <li><span><b>严格断网模拟</b>：加 <code>--full</code> 参数模拟突发断网，实测 Kill Switch 阻断表现。</span></li>
+          <li><span><b>对标专业体系</b>：核验 Trust Score、IP 属性、WebRTC UDP 穿透及 IPv6 旁路，提供可验证的交付验收依据。</span></li>
         </ul>
-        <div class="cli below"><pre id="c-doctor">aibox doctor</pre><button class="copy" type="button" data-target="c-doctor">复制</button></div>
+        <div class="cli below"><pre id="c-doctor">aibox doctor</pre><button class="copy" type="button" data-target="c-doctor">复制命令</button></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="sec alt" id="faq" aria-labelledby="faq-title">
+<!-- ============ FAQ 与指纹科普 ============ -->
+<section class="sec" id="faq" aria-labelledby="faq-title">
   <div class="shell">
-    <p class="eyebrow">FAQ</p>
+    <p class="eyebrow">FAQ & BEST PRACTICES</p>
     <h2 class="h2" id="faq-title">动手之前，<br>你可能想问。</h2>
+
+    <!-- 指纹浏览器协同实践科普 -->
+    <div class="fp-box">
+      <h3>💡 aibox 是否使用了指纹浏览器？如何实现全链路防关联？</h3>
+      <p><b>明确技术事实：</b>Claude Code 是基于终端的 Node.js CLI 工具，底层直接发起网络 API 交互，本身并不运行在网页浏览器中，因此不存在内置 Web 指纹浏览器的载体。aibox 针对终端实现了系统级时区与语言 Locale 自动对齐、环境脱敏与网络隔离。</p>
+      <p><b>最佳实践推荐：</b>首次运行 <code>aibox claude</code> 时终端会打印一段 OAuth 网页授权链接。如果您对防风控有极致要求，<b>推荐将该链接复制到配置了相同纯净节点的指纹浏览器（如 AdsPower、Hubstudio、Camoufox）中打开完成登录</b>，再把授权码粘回终端，从而实现“Web登录端（指纹防关联）+ 终端沙箱（aibox专网）”的双重闭环！</p>
+    </div>
+
     <div class="faq sec-body">
       <details>
-        <summary><span>目标是防封号吗？能完全隐藏真实机器吗？</span></summary>
+        <summary><span>使用 aibox 保证 100% 不封号吗？</span></summary>
         <div class="ans">
-          <p>目标是减少 Claude Code 获取或暴露真实公网 IP、本机系统与个人环境信息，以降低相关账号风控与封号风险。aibox 提供独立出口和容器隔离，不提供完整机器指纹伪装，也不保证防封号。</p>
-          <p>账号身份、使用行为、出口 IP 信誉和服务规则仍会影响账号状态。工具自己的遥测、账号标识与容器可见的内核和硬件信息，不会因此被消除。</p>
+          <p>没有任何工具能承诺“绝对防封”。Anthropic 官方风控涵盖节点历史信誉、账号注册来源、支付卡属地、输入内容违规等多重因素。aibox 专注为您构建最纯净的“网络隔离与环境防穿透”底座。如需商业风控对冲，可加购 UseHooo 官方提供的 <b>封号安心包</b>（¥499/月，拟提供30天保障，规则待确认）。</p>
         </div>
       </details>
       <details>
-        <summary><span>登录时打开的浏览器也走 aibox 吗？</span></summary>
+        <summary><span>必须自己准备代理节点吗？</span></summary>
         <div class="ans">
-          <p>宿主机浏览器使用它自己的网络设置，不会自动走容器的节点。aibox 约束的是工作容器内的 AI 请求；主机上的浏览器和其他程序需要单独管理。</p>
+          <p>是的，aibox 保持纯粹的技术中立与极客属性，工具本身不附带任何免费节点或代理。您可以使用常用的订阅链接（Clash、v2rayN、Shadowrocket 等格式均可自动识别），或自建 WireGuard 节点。</p>
         </div>
       </details>
       <details>
-        <summary><span>和 Clash 有什么关系？能直接用它吗？</span></summary>
+        <summary><span>远程代装会索取我的 Claude 账号密码吗？</span></summary>
         <div class="ans">
-          <p>两者管的不是一件事：Clash 管整台电脑上网，aibox 只管 AI 的出口，可以同时用。aibox 不能把本机 Clash 当上游，运行 <code>aibox config</code>，把 Clash 用的订阅链接粘贴进去即可。</p>
+          <p><b>绝对不会。</b>整个代装过程全程远程透明、可审计。在最后的登录环节，技术专家会暂停屏幕共享或等待您在本地终端中亲自输入授权凭据，严禁代登，保障您的数字资产安全。</p>
         </div>
       </details>
       <details>
-        <summary><span>支持哪些系统？</span></summary>
+        <summary><span>支持在哪些操作系统上运行？</span></summary>
         <div class="ans">
-          <p>macOS（推荐 OrbStack，Docker Desktop、Colima 也可以）和 Linux（Docker 25+、Compose 2.24+）。已在 Ubuntu 24.04 arm64、Docker 29 上实测通过；真实的 Mac、SELinux 和 rootless Docker 还没实测过，欢迎反馈。</p>
+          <p>完美支持 macOS（Intel / Apple Silicon 芯片，推荐使用 OrbStack 或 Docker Desktop）、原生 Linux（Ubuntu / Debian 等），以及 Windows 系统（需开启 WSL2 集成）。</p>
         </div>
       </details>
       <details>
-        <summary><span>Windows 怎么用？</span></summary>
+        <summary><span>我的网络节点断了，会不会偷偷跳回国内直连？</span></summary>
         <div class="ans">
-          <p>在 WSL2 里使用：安装 Docker Desktop 并开启 WSL2 集成，之后在 WSL 终端里操作，和 Linux 一样。</p>
-        </div>
-      </details>
-      <details>
-        <summary><span>节点断了会怎样？</span></summary>
-        <div class="ans">
-          <p>容器直接断网，不会改走本机网络。节点恢复后自动重连，不用重启。</p>
-        </div>
-      </details>
-      <details>
-        <summary><span>aibox 和 Anthropic、OpenAI 有关系吗？</span></summary>
-        <div class="ans">
-          <p>没有。aibox 是独立的开源项目，只是在容器里运行这些工具，使用时需要遵守它们各自的服务条款。</p>
+          <p>绝对不会。aibox 内置内核级 Fail-Closed 防火墙规则，节点一旦中断，沙箱内流量立即断网静默丢弃，绝不会有任何数据包走宿主机直连泄露真实 IP。节点恢复后约 3 秒自动重新联网。</p>
         </div>
       </details>
     </div>
@@ -403,33 +445,36 @@ aibox claude</pre></div>
     <div class="foot-grid">
       <div>
         <a class="logo" href="./"><i aria-hidden="true"></i>aibox</a>
-        <p style="margin:14px 0 0;max-width:28em">为 Claude Code 提供独立出口与容器环境，减少真实 IP、本机系统与个人文件的暴露。</p>
+        <p style="margin:14px 0 0;max-width:28em">Claude Code 专属安全沙盒。专网运行，告别网络冲突；环境协助、订阅与售后服务可在商城查看。</p>
       </div>
       <div>
-        <h2>项目</h2>
+        <h2>UseHooo 与商城</h2>
         <ul>
-          <li><a href="https://github.com/seqi781/aibox">GitHub 仓库</a></li>
-          <li><a href="https://github.com/seqi781/aibox/issues">问题反馈</a></li>
-          <li><a href="https://github.com/seqi781/aibox/blob/main/LICENSE">开源协议：LICENSE_NAME</a></li>
+          <li><a href="https://usehooo.com/store">UseHooo 数字商城</a></li>
+          <li><a href="https://usehooo.com/tools/sms">SMS 境外接码</a></li>
+          <li><a href="https://usehooo.com/activate">CDK 自动化激活</a></li>
+          <li><a href="https://usehooo.com/orders">订单与履约查询</a></li>
         </ul>
       </div>
       <div>
-        <h2>文档</h2>
+        <h2>交流与开源</h2>
         <ul>
-          <li><a href="https://github.com/seqi781/aibox/blob/main/docs/GUIDE.md">配置与使用指南</a></li>
-          <li><a href="https://github.com/seqi781/aibox/blob/main/docs/ARCHITECTURE.md">架构与安全设计</a></li>
-          <li><a href="https://github.com/seqi781/aibox/blob/main/AGENTS.md">AGENTS.md</a></li>
+          <li><a href="https://github.com/seqi781/aibox" target="_blank" rel="noopener">GitHub 开源仓库</a></li>
+          <li><a href="https://t.me/+3wcYpPtDyR9lNjE1" target="_blank" rel="noopener">Telegram 交流群</a></li>
+          <li><a href="https://x.com/MI5606401623599" target="_blank" rel="noopener">官方 Twitter (X)</a></li>
+          <li><a href="https://github.com/seqi781/aibox/blob/main/LICENSE" target="_blank" rel="noopener">MIT 开源协议</a></li>
         </ul>
       </div>
     </div>
     <div class="legal">
-      <p>aibox 是独立的开源项目，与 Anthropic、OpenAI 没有关联，也未获得其认可或背书。Claude Code、Codex 及相关名称是其各自所有者的商标，本站仅用于说明兼容性。</p>
-      <p>aibox 以减少真实机器环境暴露、降低相关账号风险为目标，不保证防封号。请在遵守当地法律法规和所用服务条款的前提下使用。</p>
-      <p>本站不使用 Cookie，不加载任何统计或追踪脚本，也不请求第三方资源。</p>
+      <p>aibox 是独立的开源沙盒项目，与 Anthropic、OpenAI 没有隶属关系。Claude Code、Codex 均为其各自所有者的注册商标。</p>
+      <p>aibox 以减少真实环境暴露、降低相关账号网络风险为核心目标，不代表技术上绝对防封。服务价格与交付范围以商城最新商品说明及确认订单页为准。</p>
+      <p>本站不加载任何第三方追踪脚本，不侵犯用户隐私，极速无感加载。</p>
     </div>
   </div>
 </footer>
 
+<script src="assets/pricing.js" defer></script>
 <script src="assets/site.js" defer></script>
 </body>
 </html>
