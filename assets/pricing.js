@@ -31,6 +31,7 @@
         const sku = card.dataset.productSku;
         const p = data.products.find(item => item.sku === sku);
         const button = field(card, 'button');
+        card.hidden = p?.visible === false;
         if (!p || !Number.isSafeInteger(p.priceFen) || p.priceFen < 0 || !Array.isArray(p.features)) {
           if (sku !== freeSku) {
             field(card, 'price').textContent = '—';
